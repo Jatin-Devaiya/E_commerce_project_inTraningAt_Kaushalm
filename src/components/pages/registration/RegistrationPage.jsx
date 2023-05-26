@@ -1,91 +1,35 @@
 import React, { useState } from "react";
 import "./registrationform.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const RegistrationPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform form submission logic here
-    console.log("Form submitted:", { name, email });
+
+    // Make API request to register the user
+    axios
+      .post("https://fake-e-commerce-api.onrender.com/signup", {
+        name,
+        email,
+        password,
+      })
+      .then((res) => {
+        console.log(res.data);
+        console.log("Form submitted:", { name, email, password });
+      });
+
     // Reset the form fields
     setName("");
     setEmail("");
     setPassword("");
-  
   };
   return (
-    //   <>
-    //     <form action="action_page.php">
-    //       <div className="container">
-    //         <h1>Register</h1>
-    //         <p>Please fill in this form to create an account.</p>
-    //         <hr />
-    //         <label htmlFor="email">
-    //           <b>Name</b>
-    //         </label>
-    //         <input
-    //           className="inp"
-    //           type="text"
-    //           placeholder="Enter Name"
-    //           name="text"
-    //           id="name"
-    //           required
-    //         />
-    //         <label htmlFor="email">
-    //           <b>Email</b>
-    //         </label>
-    //         <input
-    //           className="inp"
-    //           type="text"
-    //           placeholder="Enter Email"
-    //           name="email"
-    //           id="email"
-    //           required
-    //         />
-    //         <label htmlFor="psw">
-    //           <b>Password</b>
-    //         </label>
-    //         <input
-    //           className="inp"
-    //           type="password"
-    //           placeholder="Enter Password"
-    //           name="psw"
-    //           id="psw"
-    //           required
-    //         />
-    //         {/* <label htmlFor="psw-repeat">
-    //           <b>Repeat Password</b>
-    //         </label>
-    //         <input
-    //           className="inp"
-    //           type="password"
-    //           placeholder="Repeat Password"
-    //           name="psw-repeat"
-    //           id="psw-repeat"
-    //           required
-    //         /> */}
-    //         <hr />
-    //         <p>
-    //           By creating an account you agree to our{" "}
-    //           <a href="#">Terms &amp; Privacy</a>.
-    //         </p>
-    //         <button type="submit" className="registerbtn">
-    //           Register
-    //         </button>
-    //       </div>
-    //       <div className="container signin">
-    //         <p>
-    //           Already have an account? <Link to="/loginpage">Sign in</Link>.
-    //         </p>
-    //       </div>
-    //     </form>
-    //   </>
     <>
-    
       <form onSubmit={handleSubmit}>
         <div className="container">
           <h1>Register</h1>
@@ -109,7 +53,7 @@ const RegistrationPage = () => {
           </label>
           <input
             className="inp"
-            type="text"
+            type="email"
             placeholder="Enter Email"
             name="email"
             id="email"
@@ -119,6 +63,12 @@ const RegistrationPage = () => {
           />
           <label htmlFor="psw">
             <b>Password</b>
+            <span>
+              {" "}
+              - should be string and include at least : one number, one
+              uppercase, lowercase letter, one special caracter, and at least 8
+              or more characters
+            </span>
           </label>
           <input
             className="inp"
