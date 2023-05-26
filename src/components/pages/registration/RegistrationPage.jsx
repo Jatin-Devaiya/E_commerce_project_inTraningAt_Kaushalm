@@ -10,11 +10,12 @@ const RegistrationPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform form submission logic here
-    console.log("Form submitted:", { name, email, password });
+    console.log("Form submitted:", { name, email });
     // Reset the form fields
     setName("");
     setEmail("");
     setPassword("");
+  
   };
   return (
     //   <>
@@ -84,6 +85,7 @@ const RegistrationPage = () => {
     //     </form>
     //   </>
     <>
+    
       <form onSubmit={handleSubmit}>
         <div className="container">
           <h1>Register</h1>
