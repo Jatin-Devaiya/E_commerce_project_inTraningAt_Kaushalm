@@ -1,0 +1,10 @@
+.ui-w-40 {
+  width: 60px !important;
+  height: auto;
+}
+
+.cardclass {
+  box-shadow: 0 1px 15px 1px rgba(52, 40, 104, 0.08);
+}
+
+

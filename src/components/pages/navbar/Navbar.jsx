@@ -24,14 +24,23 @@ const Navbar = () => {
         // console.log(res.data, "subcategory");
       });
   };
-  // const searchHandler = (e) => {
-  //   e.preventDefault();
-  // };
+
+  const LOGOUT_API = () => {
+    axios
+      .get("https://fake-e-commerce-api.onrender.com/logout", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res.data);
+        return res.data;
+      });
+  };
 
   useEffect(() => {
     GET_CATEGORIES_API();
     GET_SUBCATEGORIES_API();
   }, []);
+
   return (
     <div className="sticky-top">
       {/* Navbar */}
@@ -84,11 +93,7 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  
-                  <Link
-                    to={`allproduct`}
-                    className="dropdown-item"
-                  >
+                  <Link to={`allproduct`} className="dropdown-item">
                     All Products
                   </Link>
                   {categories.map((categories) => {
@@ -192,20 +197,6 @@ const Navbar = () => {
 
           {/* Search */}
           <NavLink to={`searchProduct/${keyword}`}>
-            {/* <form
-              className="w-auto py-1 mx-3"
-              style={{ maxWidth: "13rem" }}
-              onSubmit={searchHandler}
-            >
-              <input
-                type="search"
-                className="form-control rounded-0 "
-                placeholder="Search"
-                aria-label="Search"
-                onChange={(e) => setKeyword(e.target.value)}
-                // value={keyword}
-              />
-            </form> */}
             <form>
               <div className="input-group ps-5">
                 <div id="navbar-search-autocomplete" className="form-outline">
@@ -227,13 +218,13 @@ const Navbar = () => {
           </NavLink>
           <div className="d-flex align-items-center">
             {/* Icon */}
-            <a className="text-reset me-3" href="#">
+            <Link className="text-reset me-3" to="/cartui">
               <i className="fas fa-shopping-cart" />
               {/* <span className="badge rounded-pill badge-notification bg-danger">
                   5
                 </span>
                  */}
-            </a>
+            </Link>
             {/* Notifications */}
             <div className="dropdown">
               <a
@@ -308,7 +299,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#" onClick={LOGOUT_API}>
                     Logout
                   </a>
                 </li>

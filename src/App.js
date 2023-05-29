@@ -14,12 +14,12 @@ import SortProduct from "./components/pages/allProductList/SortProduct";
 import AllProductListing from "./components/pages/allProductList/AllProductListing";
 import RegistrationPage from "./components/pages/registration/RegistrationPage";
 import LoginPage from "./components/pages/login/LoginPage";
+import CartUI from "./components/pages/cart/CartUI";
 
 function App() {
   return (
     <>
       <Navbar />
-      {/* <RegistrationPage /> */}
 
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -37,6 +37,7 @@ function App() {
         <Route path="*" element={<Err />} />
         <Route path="/singleproduct/:id" element={<SingleProduct />} />
         <Route path="/searchProduct/:search" element={<SearchProduct />} />
+        <Route path="/cartui" element={<CartUI />} />
       </Routes>
     </>
   );

@@ -17,7 +17,27 @@ const SingleProduct = () => {
         // return res.data;
       });
   }, [id]);
-  // console.log(getProductData, "getProductData");
+  console.log(getProductData, "getProductData");
+
+  const ADD_PRODUCT_TO_CART_API = () => {
+    axios
+      .post(
+        "https://fake-e-commerce-api.onrender.com/cart/add",
+        {
+          productId: `${id}`,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then(
+        (res) => {
+          console.log("ADD_PRODUCT_TO_CART_API", res.data);
+          // return res.data;
+        },
+        [id]
+      );
+  };
 
   return (
     <>
@@ -72,14 +92,14 @@ const SingleProduct = () => {
                     <span className="h5">₹{getProductData.price}</span>
                     <span className="text-muted">/per item</span>
                   </div>
-                  <p>
-                    {/* Modern look and quality demo item is a streetwear-inspired
-                    collection that continues to break away from the conventions
-                    of mainstream fashion. Made in Italy, these black and brown
-                    clothing low-top shirts for men. */}
-
-                    {/* {getProductData.description} */}
-                  </p>
+                  {/* <div className="d-flex flex-row align-items-center mb-1">
+                              <h4 className="mb-1 me-1">
+                                ${getProductData.price}
+                              </h4>
+                              <span className="text-danger">
+                                <s>{getProductData?.Sale.pricebefore}</s>
+                              </span>
+                            </div> */}
                   <div className="row">
                     <dt className="col-3">category:</dt>
                     <dd className="col-9">{getProductData?.category}</dd>
@@ -133,9 +153,11 @@ const SingleProduct = () => {
                     {" "}
                     Buy now{" "}
                   </a>
-                  <a href="#" className="btn btn-primary shadow-0">
-                    {" "}
-                    <i className="me-1 fa fa-shopping-basket" /> Add to cart{" "}
+                  <a
+                    className="btn btn-primary shadow-0"
+                    onClick={ADD_PRODUCT_TO_CART_API}
+                  >
+                    <i className="me-1 fa fa-shopping-basket" /> Add to cart
                   </a>
                   <a
                     href="#"
@@ -223,84 +245,7 @@ const SingleProduct = () => {
                       role="tabpanel"
                       aria-labelledby="ex1-tab-1"
                     >
-                      <p>
-                        With supporting text below as a natural lead-in to
-                        additional content. Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad
-                        minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum
-                        dolore eu fugiat nulla pariatur.
-                      </p>
-                      <div className="row mb-2">
-                        <div className="col-12 col-md-6">
-                          <ul className="list-unstyled mb-0">
-                            <li>
-                              <i className="fas fa-check text-success me-2" />
-                              Some great feature name here
-                            </li>
-                            <li>
-                              <i className="fas fa-check text-success me-2" />
-                              Lorem ipsum dolor sit amet, consectetur
-                            </li>
-                            <li>
-                              <i className="fas fa-check text-success me-2" />
-                              Duis aute irure dolor in reprehenderit
-                            </li>
-                            <li>
-                              <i className="fas fa-check text-success me-2" />
-                              Optical heart sensor
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-12 col-md-6 mb-0">
-                          <ul className="list-unstyled">
-                            <li>
-                              <i className="fas fa-check text-success me-2" />
-                              Easy fast and ver good
-                            </li>
-                            <li>
-                              <i className="fas fa-check text-success me-2" />
-                              Some great feature name here
-                            </li>
-                            <li>
-                              <i className="fas fa-check text-success me-2" />
-                              Modern style and design
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <table className="table border mt-3 mb-2">
-                        <tbody>
-                          <tr>
-                            <th className="py-2">Display:</th>
-                            <td className="py-2">
-                              13.3-inch LED-backlit display with IPS
-                            </td>
-                          </tr>
-                          <tr>
-                            <th className="py-2">Processor capacity:</th>
-                            <td className="py-2">
-                              2.3GHz dual-core Intel Core i5
-                            </td>
-                          </tr>
-                          <tr>
-                            <th className="py-2">Camera quality:</th>
-                            <td className="py-2">720p FaceTime HD camera</td>
-                          </tr>
-                          <tr>
-                            <th className="py-2">Memory</th>
-                            <td className="py-2">8 GB RAM or 16 GB RAM</td>
-                          </tr>
-                          <tr>
-                            <th className="py-2">Graphics</th>
-                            <td className="py-2">
-                              Intel Iris Plus Graphics 640
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <p>{getProductData.description}</p>
                     </div>
                     <div
                       className="tab-pane fade mb-2"
@@ -358,79 +303,6 @@ const SingleProduct = () => {
                   {/* Pills content */}
                 </div>
               </div>
-              {/* <div className="col-lg-4">
-                <div className="px-0 border rounded-2 shadow-0">
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="card-title">Similar items</h5>
-                      <div className="d-flex mb-3">
-                        <a href="#" className="me-3">
-                          <img
-                            src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/8.webp"
-                            style={{ minWidth: 96, height: 96 }}
-                            className="img-md img-thumbnail"
-                          />
-                        </a>
-                        <div className="info">
-                          <a href="#" className="nav-link mb-1">
-                            Rucksack Backpack Large <br />
-                            Line Mounts
-                          </a>
-                          <strong className="text-dark"> $38.90</strong>
-                        </div>
-                      </div>
-                      <div className="d-flex mb-3">
-                        <a href="#" className="me-3">
-                          <img
-                            src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/9.webp"
-                            style={{ minWidth: 96, height: 96 }}
-                            className="img-md img-thumbnail"
-                          />
-                        </a>
-                        <div className="info">
-                          <a href="#" className="nav-link mb-1">
-                            Summer New Men's Denim <br />
-                            Jeans Shorts
-                          </a>
-                          <strong className="text-dark"> $29.50</strong>
-                        </div>
-                      </div>
-                      <div className="d-flex mb-3">
-                        <a href="#" className="me-3">
-                          <img
-                            src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/10.webp"
-                            style={{ minWidth: 96, height: 96 }}
-                            className="img-md img-thumbnail"
-                          />
-                        </a>
-                        <div className="info">
-                          <a href="#" className="nav-link mb-1">
-                            {" "}
-                            T-shirts with multiple colors, for men and lady{" "}
-                          </a>
-                          <strong className="text-dark"> $120.00</strong>
-                        </div>
-                      </div>
-                      <div className="d-flex">
-                        <a href="#" className="me-3">
-                          <img
-                            src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/11.webp"
-                            style={{ minWidth: 96, height: 96 }}
-                            className="img-md img-thumbnail"
-                          />
-                        </a>
-                        <div className="info">
-                          <a href="#" className="nav-link mb-1">
-                            {" "}
-                            Blazer Suit Dress Jacket for Men, Blue color{" "}
-                          </a>
-                          <strong className="text-dark"> $339.90</strong>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </section>
