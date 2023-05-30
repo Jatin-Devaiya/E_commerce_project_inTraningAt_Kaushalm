@@ -220,10 +220,10 @@ const Navbar = () => {
             {/* Icon */}
             <Link className="text-reset me-3" to="/cartui">
               <i className="fas fa-shopping-cart" />
-              {/* <span className="badge rounded-pill badge-notification bg-danger">
+              <span className="badge rounded-pill badge-notification bg-danger">
                   5
                 </span>
-                 */}
+                
             </Link>
             {/* Notifications */}
             <div className="dropdown">

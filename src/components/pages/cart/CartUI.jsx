@@ -4,6 +4,42 @@ import axios from "axios";
 
 const CartUI = () => {
   const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const ICREASE_QUANTITY_BY_1_API = (id) => {
+    axios
+      .post(
+        "https://fake-e-commerce-api.onrender.com/cart/increase",
+        {
+          productId: `${id}`,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        GET_CART_API();
+      });
+  };
+
+  const DECREASE_QUANTITY_BY_1 = (id) => {
+    axios
+      .post(
+        "https://fake-e-commerce-api.onrender.com/cart/decrease",
+        {
+          productId: `${id}`,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        GET_CART_API();
+        // return res.data;
+      });
+  };
 
   const removeProductFromCart = (id) => {
     axios
@@ -22,6 +58,22 @@ const CartUI = () => {
       })
       .catch((error) => {
         console.log(error); // Handle any errors that occurred during the request
+      });
+  };
+
+  const CLEAR_CART_API = () => {
+    axios
+      .post(
+        "https://fake-e-commerce-api.onrender.com/cart/remove",
+        {},
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        setCart([]);
+        console.log(res.data);
+        // return res.data;
       });
   };
 
@@ -45,6 +97,21 @@ const CartUI = () => {
   useEffect(() => {
     GET_CART_API();
   }, []);
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [cart]);
+
+  const calculateTotalPrice = () => {
+    let total = 0;
+    cart.forEach((cartItem) => {
+      const productPrice = cartItem.product.price;
+      const quantity = cartItem.quantity;
+      const productTotal = productPrice * quantity;
+      total += productTotal;
+    });
+    setTotalPrice(total);
+  };
 
   return (
     <>
@@ -115,15 +182,50 @@ const CartUI = () => {
                           <td className="text-right font-weight-semibold align-middle p-4">
                             ${cartitems.product.price}
                           </td>
-                          <td className="align-middle p-4">
+
+                          <div
+                            className="input-group mb-3 py-5"
+                            style={{ width: 170 }}
+                          >
+                            <button
+                              className="btn btn-white border border-secondary px-2"
+                              type="button"
+                              id="button-addon1"
+                              data-mdb-ripple-color="dark"
+                            >
+                              <i
+                                className="fas fa-minus"
+                                onClick={() => {
+                                  DECREASE_QUANTITY_BY_1(cartitems.product._id);
+                                }}
+                              />
+                            </button>
                             <input
                               type="text"
-                              className="form-control text-center"
-                              defaultValue={cartitems.product.quantity}
+                              className="form-control text-center border border-secondary"
+                              placeholder={cartitems.quantity}
+                              aria-label="Example text with button addon"
+                              aria-describedby="button-addon1"
                             />
-                          </td>
+                            <button
+                              className="btn btn-white border border-secondary px-2"
+                              type="button"
+                              id="button-addon2"
+                              data-mdb-ripple-color="dark"
+                            >
+                              <i
+                                className="fas fa-plus"
+                                onClick={() => {
+                                  ICREASE_QUANTITY_BY_1_API(
+                                    cartitems.product._id
+                                  );
+                                }}
+                              />
+                            </button>
+                          </div>
+
                           <td className="text-right font-weight-semibold align-middle p-4">
-                            $115.1
+                            ${cartitems.product.price * cartitems.quantity}
                           </td>
                           <td className="text-center align-middle px-0">
                             <a
@@ -154,6 +256,12 @@ const CartUI = () => {
                 </label>
                 <input type="text" placeholder="ABC" className="form-control" />
               </div>
+
+              {/* remove all cart button */}
+              <button className="btn btn-danger" onClick={CLEAR_CART_API}>
+                Remove all
+              </button>
+
               <div className="d-flex">
                 <div className="text-right mt-4 mr-5">
                   <label className="text-muted font-weight-normal m-0">
@@ -163,13 +271,31 @@ const CartUI = () => {
                     <strong>$20</strong>
                   </div>
                 </div>
-                <div className="text-right mt-4">
-                  <label className="text-muted font-weight-normal m-0">
-                    Total price
-                  </label>
-                  <div className="text-large">
-                    <strong>$1164.65</strong>
-                  </div>
+              </div>
+
+              <div className="text-right mt-4">
+                <label className="text-muted font-weight-normal m-0">
+                  Total price
+                </label>
+                <div className="text-large">
+                  <strong>${totalPrice.toFixed(2)}</strong>
+                </div>
+              </div>
+              <div className="text-right mt-4">
+                <label className="text-muted font-weight-normal m-0">
+                  Net price
+                </label>
+                <div className="text-large">
+                  <strong>${totalPrice - (totalPrice * 20) / 100}</strong>
+                </div>
+              </div>
+
+              <div className="text-right mt-4">
+                <label className="text-muted font-weight-normal m-0">
+                  Save
+                </label>
+                <div className="text-large">
+                  <strong>${(totalPrice * 20) / 100}</strong>
                 </div>
               </div>
             </div>
