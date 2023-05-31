@@ -212,8 +212,6 @@ const Homepage = () => {
           </div>
         </main>
         {/*Main layout*/}
-
-        <Footer />
       </div>
     </>
   );

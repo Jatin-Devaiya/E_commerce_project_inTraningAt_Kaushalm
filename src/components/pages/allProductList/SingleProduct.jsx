@@ -15,6 +15,7 @@ const SingleProduct = () => {
         setGetProductData(res.data);
       });
   }, [id]);
+
   console.log(getProductData, "getProductData");
 
   const ADD_PRODUCT_TO_CART_API = () => {
@@ -90,14 +91,7 @@ const SingleProduct = () => {
                     <span className="h5">₹{getProductData.price}</span>
                     <span className="text-muted">/per item</span>
                   </div>
-                  {/* <div className="d-flex flex-row align-items-center mb-1">
-                              <h4 className="mb-1 me-1">
-                                ${getProductData.price}
-                              </h4>
-                              <span className="text-danger">
-                                <s>{getProductData?.Sale.pricebefore}</s>
-                              </span>
-                            </div> */}
+
                   <div className="row">
                     <dt className="col-3">category:</dt>
                     <dd className="col-9">{getProductData?.category}</dd>
@@ -106,9 +100,9 @@ const SingleProduct = () => {
                   </div>
                   <hr />
 
-                  <a href="#" className="btn btn-warning shadow-0">
+                  {/* <a href="#" className="btn btn-warning shadow-0">
                     Buy now
-                  </a>
+                  </a> */}
                   <a
                     className="btn btn-primary shadow-0"
                     onClick={ADD_PRODUCT_TO_CART_API}
@@ -261,8 +255,6 @@ const SingleProduct = () => {
             </div>
           </div>
         </section>
-
-        {<Footer />}
       </div>
     </>
   );

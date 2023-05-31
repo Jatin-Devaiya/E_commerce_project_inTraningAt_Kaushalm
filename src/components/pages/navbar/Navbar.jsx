@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ totalQuantity }) => {
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
   const [keyword, setKeyword] = useState("");
@@ -31,7 +31,7 @@ const Navbar = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data, "logout");
         return res.data;
       });
   };
@@ -177,18 +177,6 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
-
-              <li className="nav-item">
-                <NavLink className="nav-link" to="about">
-                  About
-                </NavLink>
-              </li>
-
-              <li className="nav-item">
-                <NavLink className="nav-link" to="contact">
-                  Contact
-                </NavLink>
-              </li>
             </ul>
             {/* Left links */}
           </div>
@@ -221,9 +209,8 @@ const Navbar = () => {
             <Link className="text-reset me-3" to="/cartui">
               <i className="fas fa-shopping-cart" />
               <span className="badge rounded-pill badge-notification bg-danger">
-                  5
-                </span>
-                
+                {totalQuantity}
+              </span>
             </Link>
             {/* Notifications */}
             <div className="dropdown">
@@ -310,7 +297,6 @@ const Navbar = () => {
         </div>
         {/* Container wrapper */}
       </nav>
-      {/* Navbar */}
     </div>
   );
 };

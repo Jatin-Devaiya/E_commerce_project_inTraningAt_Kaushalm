@@ -59,11 +59,6 @@ const ProductListing = () => {
             className="d-flex justify-content-center mt-3"
           >
             <ul className="pagination">
-              <li className="page-item disabled">
-                <a className="page-link" aria-label="Previous">
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li>
               <li className="page-item ">
                 <p
                   className="page-link"
@@ -125,8 +120,63 @@ const ProductListing = () => {
                 </a>
               </li>
               <li className="page-item">
-                <a className="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">»</span>
+                <a
+                  className="page-link"
+                  onClick={() =>
+                    SETAPI(
+                      `https://fake-e-commerce-api.onrender.com/product/limit/6/8`
+                    )
+                  }
+                >
+                  6
+                </a>
+              </li>
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  onClick={() =>
+                    SETAPI(
+                      `https://fake-e-commerce-api.onrender.com/product/limit/7/8`
+                    )
+                  }
+                >
+                  7
+                </a>
+              </li>
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  onClick={() =>
+                    SETAPI(
+                      `https://fake-e-commerce-api.onrender.com/product/limit/8/8`
+                    )
+                  }
+                >
+                  8
+                </a>
+              </li>
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  onClick={() =>
+                    SETAPI(
+                      `https://fake-e-commerce-api.onrender.com/product/limit/9/8`
+                    )
+                  }
+                >
+                  9
+                </a>
+              </li>
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  onClick={() =>
+                    SETAPI(
+                      `https://fake-e-commerce-api.onrender.com/product/limit/10/8`
+                    )
+                  }
+                >
+                  10
                 </a>
               </li>
             </ul>

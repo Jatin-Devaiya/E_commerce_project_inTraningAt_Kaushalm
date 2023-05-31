@@ -3,8 +3,6 @@ import "./App.css";
 
 import Homepage from "./components/pages/home/Homepage";
 import Navbar from "./components/pages/navbar/Navbar";
-import About from "./components/pages/About";
-import Contact from "./components/pages/Contact";
 import SingleProduct from "./components/pages/allProductList/SingleProduct";
 import Err from "./components/pages/errorPage/Err";
 import CategoryWiseProducts from "./components/pages/category/CategoryWiseProducts";
@@ -15,6 +13,7 @@ import AllProductListing from "./components/pages/allProductList/AllProductListi
 import RegistrationPage from "./components/pages/registration/RegistrationPage";
 import LoginPage from "./components/pages/login/LoginPage";
 import CartUI from "./components/pages/cart/CartUI";
+import Footer from "./components/pages/footer/Footer";
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/about" element={<About />} />
         <Route path="/categorys/:category" element={<CategoryWiseProducts />} />
         <Route path="/allproduct" element={<AllProductListing />} />
         <Route
@@ -31,7 +29,6 @@ function App() {
           element={<SubCategoryWiseProduct />}
         />
         <Route path="/sort/:sortkey" element={<SortProduct />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/loginpage" element={<LoginPage />} />
         <Route path="/registrationpage" element={<RegistrationPage />} />
         <Route path="*" element={<Err />} />
@@ -39,6 +36,8 @@ function App() {
         <Route path="/searchProduct/:search" element={<SearchProduct />} />
         <Route path="/cartui" element={<CartUI />} />
       </Routes>
+
+      <Footer/>
     </>
   );
 }

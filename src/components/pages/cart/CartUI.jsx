@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./cartUI.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Navbar from "../navbar/Navbar";
 
 const CartUI = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
 
   const ICREASE_QUANTITY_BY_1_API = (id) => {
     axios
@@ -100,6 +103,7 @@ const CartUI = () => {
 
   useEffect(() => {
     calculateTotalPrice();
+    calculateTotalQuantity();
   }, [cart]);
 
   const calculateTotalPrice = () => {
@@ -113,8 +117,19 @@ const CartUI = () => {
     setTotalPrice(total);
   };
 
+  const calculateTotalQuantity = () => {
+    let total = 0;
+    cart.forEach((cartItem) => {
+      const quantity = cartItem.quantity;
+      total += quantity;
+      console.log(total, "quantity");
+      setTotalQuantity(total);
+    });
+  };
+
   return (
     <>
+      <Navbar totalQuantity={totalQuantity} />
       <div className="container px-3 my-5 clearfix">
         {/* Shopping cart table */}
         <div className="cardclass">
@@ -285,7 +300,7 @@ const CartUI = () => {
                 <label className="text-muted font-weight-normal m-0">
                   Net price
                 </label>
-                <div className="text-large">
+                <div className="text-large text-white bg-info">
                   <strong>${totalPrice - (totalPrice * 20) / 100}</strong>
                 </div>
               </div>
@@ -294,21 +309,23 @@ const CartUI = () => {
                 <label className="text-muted font-weight-normal m-0">
                   Save
                 </label>
-                <div className="text-large">
+                <div className="text-large text-white bg-success">
                   <strong>${(totalPrice * 20) / 100}</strong>
                 </div>
               </div>
             </div>
             <div className="float-right">
-              <button
-                type="button"
-                className="btn btn-lg btn-default md-btn-flat mt-2 mr-3"
-              >
-                Back to shopping
-              </button>
-              <button type="button" className="btn btn-lg btn-primary mt-2">
-                Checkout
-              </button>
+              <Link to="/">
+                <button
+                  type="button"
+                  className="btn btn-lg btn-default md-btn-flat mt-2 mr-3"
+                >
+                  Back to shopping
+                </button>
+                <button type="button" className="btn btn-lg btn-primary mt-2">
+                  Checkout
+                </button>
+              </Link>
             </div>
           </div>
         </div>
