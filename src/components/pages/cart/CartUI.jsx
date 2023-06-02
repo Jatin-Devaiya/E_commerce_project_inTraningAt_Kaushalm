@@ -322,10 +322,10 @@ const CartUI = () => {
                 >
                   Back to shopping
                 </button>
-                <button type="button" className="btn btn-lg btn-primary mt-2">
-                  Checkout
-                </button>
               </Link>
+              <button type="button" className="btn btn-lg btn-primary mt-2">
+                Checkout
+              </button>
             </div>
           </div>
         </div>

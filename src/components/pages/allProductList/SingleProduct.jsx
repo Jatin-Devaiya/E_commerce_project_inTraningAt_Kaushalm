@@ -8,17 +8,19 @@ const SingleProduct = () => {
   console.log(id, "id");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
-  const [name, setName] = useState("");
 
   const [getUserReview, setgetUserReview] = useState([]);
 
-  useEffect(() => {
+  const SINGLE_PRODUCT_API = () => {
     axios
       .get(`https://fake-e-commerce-api.onrender.com/product/${id}`)
       .then((res) => {
         console.log(getProductData, "getProductData");
         setGetProductData(res.data);
       });
+  };
+  useEffect(() => {
+    SINGLE_PRODUCT_API();
   }, [id]);
 
   const ADD_PRODUCT_TO_CART_API = () => {
@@ -46,7 +48,6 @@ const SingleProduct = () => {
       .post(
         `https://fake-e-commerce-api.onrender.com/product/reviews/${id}/add`,
         {
-          name: name,
           rating: rating,
           review: review,
         },
@@ -56,6 +57,7 @@ const SingleProduct = () => {
       )
       .then((res) => {
         console.log(res.data, "ADD REVIEW,RATING");
+        GET_USERS_REVIEW();
         return res.data;
       });
   };
@@ -68,13 +70,37 @@ const SingleProduct = () => {
       .then((res) => {
         console.log(res.data, "GET USERS RIVIEW");
         setgetUserReview(res.data);
-        return res.data;
+        // return res.data;
       });
   };
 
   useEffect(() => {
     GET_USERS_REVIEW();
   }, []);
+
+  const DELETE_REVIEW_API = () => {
+    axios
+      .delete(
+        `https://fake-e-commerce-api.onrender.com/product/reviews/${id}/delete`,
+        {},
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data, "delete USERS review");
+        // return res.data;
+      });
+  };
+
+  const ADD_TO_WHITELIST_API = () => {
+    axios
+      .post(`https://fake-e-commerce-api.onrender.com/whitelist/${id}/add`)
+      .then((res) => {
+        console.log(res.data, "add to whitelist");
+        // return res.data;
+      });
+  };
 
   return (
     <>
@@ -88,7 +114,6 @@ const SingleProduct = () => {
                   <a
                     data-fslightbox="mygalley"
                     className="rounded-4"
-                    target="_blank"
                     data-type="image"
                     href={getProductData?.image}
                   >
@@ -148,8 +173,9 @@ const SingleProduct = () => {
                     <i className="me-1 fa fa-shopping-basket" /> Add to cart
                   </a>
                   <a
-                    href="#"
+                    // href="#"
                     className="btn btn-light border border-secondary py-2 icon-hover px-3"
+                    onClick={ADD_TO_WHITELIST_API}
                   >
                     <i className="me-1 fa fa-heart fa-lg" /> Save
                   </a>
@@ -289,17 +315,6 @@ const SingleProduct = () => {
 
                                   <div className="card-body p-4">
                                     <div className>
-                                      <h5>
-                                        <input
-                                          type="text"
-                                          value={name}
-                                          onChange={(e) =>
-                                            setName(e.target.value)
-                                          }
-                                          placeholder="Enter your name"
-                                        />
-                                      </h5>
-
                                       <span className="fw-bold">
                                         Rating : &nbsp;
                                       </span>
@@ -317,15 +332,23 @@ const SingleProduct = () => {
                                         <option value={"5"}>Five</option>
                                       </select>
                                       <br />
+                                      <br />
                                       <p>
-                                        <input
-                                          type="text"
-                                          value={review}
-                                          onChange={(e) =>
-                                            setReview(e.target.value)
-                                          }
-                                          placeholder="Enter your review"
-                                        />
+                                        <div className="form-floating">
+                                          <textarea
+                                            className="form-control"
+                                            placeholder="Leave a comment here"
+                                            id="floatingTextarea2"
+                                            style={{ height: 100 }}
+                                            value={review}
+                                            onChange={(e) =>
+                                              setReview(e.target.value)
+                                            }
+                                          />
+                                          <label htmlFor="floatingTextarea2">
+                                            Enter your review
+                                          </label>
+                                        </div>
                                       </p>
                                       <button
                                         className="btn btn-primary"
@@ -343,8 +366,14 @@ const SingleProduct = () => {
                               <div className="d-flex flex-start">
                                 <div className="card w-100">
                                   <h5 className="text-light bg-dark">
-                                    User All Review & Rating
+                                    User Review & Rating
                                   </h5>
+                                  <br />
+                                  <i
+                                    className="fa fa-trash-o px-4"
+                                    style={{ fontSize: 25, color: "red" }}
+                                    onClick={DELETE_REVIEW_API}
+                                  />
 
                                   {getUserReview.map((userReview) => {
                                     return (
@@ -352,19 +381,19 @@ const SingleProduct = () => {
                                         <div className>
                                           <h5>
                                             <span className="text-muted">
-                                              userName :{" "}
-                                            </span>{" "}
+                                              userName :
+                                            </span>
                                             {userReview.name}
                                           </h5>
                                           <h6>
                                             <span className="text-muted">
-                                              productRating :{" "}
+                                              productRating :
                                             </span>
                                             {userReview.rating}
                                           </h6>
                                           <p>
                                             <span className="text-muted">
-                                              productReview :{" "}
+                                              productReview :
                                             </span>
                                             {userReview.review}
                                           </p>

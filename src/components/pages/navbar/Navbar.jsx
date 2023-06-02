@@ -187,18 +187,15 @@ const Navbar = ({ totalQuantity }) => {
           <NavLink to={`searchProduct/${keyword}`}>
             <form>
               <div className="input-group ps-5">
-                <div id="navbar-search-autocomplete" className="form-outline">
+                <div id="navbar-search-autocomplete">
                   <input
                     type="search"
                     id="form1"
-                    className="form-control"
+                    placeholder="search"
                     onChange={(e) => setKeyword(e.target.value)}
                   />
-                  <label className="form-label" htmlFor="form1">
-                    Search
-                  </label>
                 </div>
-                <button type="button" className="btn btn-primary">
+                <button type="button" className="btn btn-primary mx-1">
                   <i className="fas fa-search" />
                 </button>
               </div>
@@ -212,41 +209,20 @@ const Navbar = ({ totalQuantity }) => {
                 {totalQuantity}
               </span>
             </Link>
-            {/* Notifications */}
-            <div className="dropdown">
-              <a
-                className="text-reset me-3 dropdown-toggle hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuLink"
+            {/* whitelist  */}
+            <div>
+              <span
+                className="text-reset me-3  hidden-arrow"
                 role="button"
-                data-mdb-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i className="fas fa-bell" />
-                <span className="badge rounded-pill badge-notification bg-danger">
-                  1
-                </span>
-              </a>
-              <ul
-                className="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Some news
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another news
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
+                <Link to="/SaveItemsList">
+                  <i
+                    className="fa fa-heart"
+                    style={{ color: "rgb(90, 90, 90)" }}
+                  ></i>
+                </Link>
+              </span>
             </div>
             {/* Avatar */}
             <div className="dropdown">
