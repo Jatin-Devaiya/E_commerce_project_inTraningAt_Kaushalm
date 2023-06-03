@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const SearchProduct = () => {
   const [searchProduct, setSearchProduct] = useState([]);
   const { search } = useParams();
+  const [error, setError] = useState(false);
   // console.log(search, "search");
   const GET_PRODUCTS_BY_SEARCH_API = () => {
     axios
@@ -15,16 +16,21 @@ const SearchProduct = () => {
       .then((res) => {
         // console.log(res.data, "ProductSearch");
         setSearchProduct(res.data);
+        setError(res.data.length === 0)
         // return res.data;
-      });
+      })
+      .catch((err) => {
+        console.log(err, "err");
+        setError(true);
+      })
   };
   useEffect(() => {
     GET_PRODUCTS_BY_SEARCH_API();
   }, [search]);
   return (
     <>
-      <div>
-        {searchProduct.map((searchProduct) => {
+      <div>{error ? (<h1 className="text-center">No products found</h1>) : (
+        searchProduct.map((searchProduct) => {
           return (
             <section style={{ backgroundColor: "#eee" }}>
               <div className="container py-5">
@@ -40,7 +46,7 @@ const SearchProduct = () => {
                                 className="w-100"
                                 alt="productphoto"
                               />
-                              <Link   to={`/singleproduct/${searchProduct._id}`}>
+                              <Link to={`/singleproduct/${searchProduct._id}`}>
                                 <div className="hover-overlay">
                                   <div
                                     className="mask"
@@ -123,7 +129,9 @@ const SearchProduct = () => {
               </div>
             </section>
           );
-        })}
+        })
+      )}
+
       </div>
     </>
   );

@@ -184,23 +184,23 @@ const Navbar = ({ totalQuantity }) => {
           {/* Right elements */}
 
           {/* Search */}
-          <NavLink to={`searchProduct/${keyword}`}>
-            <form>
-              <div className="input-group ps-5">
-                <div id="navbar-search-autocomplete">
-                  <input
-                    type="search"
-                    id="form1"
-                    placeholder="search"
-                    onChange={(e) => setKeyword(e.target.value)}
-                  />
-                </div>
+          <form>
+            <div className="input-group ps-5">
+              <div id="navbar-search-autocomplete">
+                <input
+                  type="search"
+                  id="form1"
+                  placeholder="search"
+                  onChange={(e) => setKeyword(e.target.value)}
+                />
+              </div>
+              <NavLink to={`searchProduct/${keyword}`}>
                 <button type="button" className="btn btn-primary mx-1">
                   <i className="fas fa-search" />
                 </button>
-              </div>
-            </form>
-          </NavLink>
+              </NavLink>
+            </div>
+          </form>
           <div className="d-flex align-items-center">
             {/* Icon */}
             <Link className="text-reset me-3" to="/cartui">
