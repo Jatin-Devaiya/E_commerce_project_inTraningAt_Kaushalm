@@ -29,6 +29,8 @@ const LoginPage = () => {
       // Handle the response
       console.log("Response:", response.data);
       console.log("User Succesfully Login:", { email, password });
+      alert("Login successful")
+      window.location="/"
       // Perform any necessary actions based on the response
     } catch (error) {
       // Handle error

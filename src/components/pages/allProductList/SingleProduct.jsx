@@ -37,6 +37,8 @@ const SingleProduct = () => {
       .then(
         (res) => {
           console.log("ADD_PRODUCT_TO_CART_API", res.data);
+          alert("Product added successfully")
+          window.location='/cartui'
           // return res.data;
         },
         [id]
@@ -115,7 +117,6 @@ const SingleProduct = () => {
                     data-fslightbox="mygalley"
                     className="rounded-4"
                     data-type="image"
-                    href={getProductData?.image}
                   >
                     <img
                       style={{

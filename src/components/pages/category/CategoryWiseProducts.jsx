@@ -47,7 +47,9 @@ const CategoryWiseProducts = () => {
                                 src={categoryProduct.image}
                                 className="w-100"
                               />
-                              <Link  to={`/singleproduct/${categoryProduct._id}`}>
+                              <Link
+                                to={`/singleproduct/${categoryProduct._id}`}
+                              >
                                 <div className="hover-overlay">
                                   <div
                                     className="mask"
@@ -100,12 +102,6 @@ const CategoryWiseProducts = () => {
                               >
                                 Details
                               </Link>
-                              <button
-                                className="btn btn-outline-primary btn-sm mt-2"
-                                type="button"
-                              >
-                                Add to wishlist
-                              </button>
                             </div>
                           </div>
                         </div>

@@ -129,7 +129,7 @@ const CartUI = () => {
 
   return (
     <>
-      <Navbar totalQuantity={totalQuantity} />
+      {/* <Navbar totalQuantity={totalQuantity} /> */}
       <div className="container px-3 my-5 clearfix">
         {/* Shopping cart table */}
         <div className="cardclass">
@@ -283,7 +283,7 @@ const CartUI = () => {
                     Discount
                   </label>
                   <div className="text-large">
-                    <strong>$20</strong>
+                    <strong>20%</strong>
                   </div>
                 </div>
               </div>
@@ -323,9 +323,11 @@ const CartUI = () => {
                   Back to shopping
                 </button>
               </Link>
-              <button type="button" className="btn btn-lg btn-primary mt-2">
-                Checkout
-              </button>
+              <Link to='/checkout'>
+                <button type="button" className="btn btn-lg btn-primary mt-2">
+                  Checkout
+                </button>
+              </Link>
             </div>
           </div>
         </div>

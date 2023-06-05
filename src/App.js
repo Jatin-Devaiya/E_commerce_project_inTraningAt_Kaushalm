@@ -15,7 +15,7 @@ import LoginPage from "./components/pages/login/LoginPage";
 import CartUI from "./components/pages/cart/CartUI";
 import Footer from "./components/pages/footer/Footer";
 import SaveItemsList from "./components/pages/whitelist/SaveItems";
-
+import Checkout from "./components/pages/confirmOrder/Checkout";
 
 function App() {
   return (
@@ -37,7 +37,8 @@ function App() {
         <Route path="/singleproduct/:id" element={<SingleProduct />} />
         <Route path="/searchProduct/:search" element={<SearchProduct />} />
         <Route path="/cartui" element={<CartUI />} />
-        <Route path="/SaveItemsList" element={<SaveItemsList/>} />
+        <Route path="/SaveItemsList" element={<SaveItemsList />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
 
       <Footer />

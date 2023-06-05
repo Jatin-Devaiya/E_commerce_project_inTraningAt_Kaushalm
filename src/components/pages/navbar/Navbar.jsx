@@ -32,6 +32,7 @@ const Navbar = ({ totalQuantity }) => {
       })
       .then((res) => {
         console.log(res.data, "logout");
+        window.location="/loginpage"
         return res.data;
       });
   };
