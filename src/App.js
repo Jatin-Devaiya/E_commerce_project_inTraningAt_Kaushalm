@@ -16,6 +16,7 @@ import CartUI from "./components/pages/cart/CartUI";
 import Footer from "./components/pages/footer/Footer";
 import SaveItemsList from "./components/pages/whitelist/SaveItems";
 import Checkout from "./components/pages/confirmOrder/Checkout";
+import GetOrdersList from "./components/pages/orders/GetOrdersList";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/cartui" element={<CartUI />} />
         <Route path="/SaveItemsList" element={<SaveItemsList />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/getorder" element={<GetOrdersList />} />
       </Routes>
 
       <Footer />

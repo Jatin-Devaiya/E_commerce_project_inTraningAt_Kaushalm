@@ -214,7 +214,8 @@ const Checkout = () => {
             </form>
           </div>
         </div>
-        <div className="col-25">
+        {/* cart  */}
+        {/* <div className="col-25">
           <div className="containerconfirm">
             <h4>
               Cart
@@ -243,7 +244,7 @@ const Checkout = () => {
               </span>
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

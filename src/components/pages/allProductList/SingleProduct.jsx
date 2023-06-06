@@ -37,8 +37,8 @@ const SingleProduct = () => {
       .then(
         (res) => {
           console.log("ADD_PRODUCT_TO_CART_API", res.data);
-          alert("Product added successfully")
-          window.location='/cartui'
+          alert("Product added successfully");
+          window.location = "/cartui";
           // return res.data;
         },
         [id]
@@ -60,6 +60,8 @@ const SingleProduct = () => {
       .then((res) => {
         console.log(res.data, "ADD REVIEW,RATING");
         GET_USERS_REVIEW();
+        setRating(0);
+        setReview("");
         return res.data;
       });
   };
@@ -326,11 +328,11 @@ const SingleProduct = () => {
                                           setRating(e.target.value)
                                         }
                                       >
-                                        <option value={"1"}>One</option>
-                                        <option value={"2"}>Two</option>
-                                        <option value={"3"}>Three</option>
-                                        <option value={"4"}>Four</option>
-                                        <option value={"5"}>Five</option>
+                                        <option value={"1"}>1</option>
+                                        <option value={"2"}>2</option>
+                                        <option value={"3"}>3</option>
+                                        <option value={"4"}>4</option>
+                                        <option value={"5"}>5</option>
                                       </select>
                                       <br />
                                       <br />
@@ -366,36 +368,36 @@ const SingleProduct = () => {
 
                               <div className="d-flex flex-start">
                                 <div className="card w-100">
-                                  <h5 className="text-light bg-dark">
-                                    User Review & Rating
-                                  </h5>
-                                  <br />
-                                  <i
-                                    className="fa fa-trash-o px-4"
-                                    style={{ fontSize: 25, color: "red" }}
-                                    onClick={DELETE_REVIEW_API}
-                                  />
-
                                   {getUserReview.map((userReview) => {
                                     return (
                                       <div className="card-body p-4">
+                                        <i
+                                          className="fa fa-trash-o px-4"
+                                          style={{ fontSize: 25, color: "red" }}
+                                          onClick={DELETE_REVIEW_API}
+                                        />{" "}
+                                        <br />
+                                        <br />
                                         <div className>
                                           <h5>
                                             <span className="text-muted">
                                               userName :
                                             </span>
+                                            &nbsp;
                                             {userReview.name}
                                           </h5>
                                           <h6>
                                             <span className="text-muted">
                                               productRating :
                                             </span>
+                                            &nbsp;
                                             {userReview.rating}
                                           </h6>
                                           <p>
                                             <span className="text-muted">
                                               productReview :
                                             </span>
+                                            &nbsp;
                                             {userReview.review}
                                           </p>
                                         </div>

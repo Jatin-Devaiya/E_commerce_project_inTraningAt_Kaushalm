@@ -1,4 +1,3 @@
-import Footer from "../footer/Footer";
 import ProductListing from "../allProductList/ProductListing";
 import { Link } from "react-router-dom";
 
@@ -75,11 +74,11 @@ const Homepage = () => {
                   </strong>
                 </p>
                 <Link
-                  target="_blank"
+                  // target="_blank"
                   to="/"
                   className="btn btn-outline-white btn-lg"
                 >
-                  It’s all inside
+                  Login is nessesary then product add & remove
                   <i className="fab fa-ello ms-2" />
                 </Link>
               </div>
@@ -175,7 +174,7 @@ const Homepage = () => {
                   to="/"
                   className="btn btn-outline-white btn-lg"
                 >
-                  It’s all insid
+                  Login is necessary then add remove cart
                   <i className="fab fa-ello ms-2" />
                 </Link>
               </div>

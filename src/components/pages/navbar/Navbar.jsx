@@ -32,7 +32,7 @@ const Navbar = ({ totalQuantity }) => {
       })
       .then((res) => {
         console.log(res.data, "logout");
-        window.location="/loginpage"
+        window.location = "/loginpage";
         return res.data;
       });
   };
@@ -253,9 +253,9 @@ const Navbar = ({ totalQuantity }) => {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Settings
-                  </a>
+                  <Link className="dropdown-item" to="/getorder">
+                    My orders
+                  </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="loginpage">

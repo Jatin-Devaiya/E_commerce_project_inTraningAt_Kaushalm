@@ -106,6 +106,27 @@ const CartUI = () => {
     calculateTotalQuantity();
   }, [cart]);
 
+  const CHANGE_QUANTITY_API = (e, id) => {
+    console.log(e.target.value);
+    console.log(id);
+    e.preventDefault();
+    axios
+      .post(
+        "https://fake-e-commerce-api.onrender.com/cart/change",
+        {
+          productId: id,
+          quantity: e.target.value,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data, "change quantity");
+        return res.data;
+      });
+  };
+
   const calculateTotalPrice = () => {
     let total = 0;
     cart.forEach((cartItem) => {
@@ -219,6 +240,9 @@ const CartUI = () => {
                               type="text"
                               className="form-control text-center border border-secondary"
                               placeholder={cartitems.quantity}
+                              onChange={(e) => {
+                                CHANGE_QUANTITY_API(e, cartitems.product._id);
+                              }}
                               aria-label="Example text with button addon"
                               aria-describedby="button-addon1"
                             />
@@ -323,7 +347,7 @@ const CartUI = () => {
                   Back to shopping
                 </button>
               </Link>
-              <Link to='/checkout'>
+              <Link to="/checkout">
                 <button type="button" className="btn btn-lg btn-primary mt-2">
                   Checkout
                 </button>

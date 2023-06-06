@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -9,30 +10,33 @@ const Footer = () => {
       >
         {/*Call to action*/}
         <div className="pt-4 pb-2">
-          <a
-            className="btn btn-outline-white footer-cta mx-2"
-            href="#"
-            // target="_blank"
-            role="button"
-          >
-            Download JD
-            <i className="fas fa-download ms-2" />
-          </a>
-          <a
+          <Link
+            to="/loginpage"
             className="btn btn-outline-white footer-cta mx-2"
             href="#"
             target="_self"
             role="button"
           >
-            Start Journey With JD E-Commerce
+            Start Journey With JD E-Commerce Login Now
             <i className="fas fa-graduation-cap ms-2" />
-          </a>
+          </Link>
         </div>
         {/*/.Call to action*/}
         <hr className="text-dark" />
         <div className="container">
           {/* Section: Social media */}
           <section className="mb-3">
+            {/* linkdin */}
+            <a
+              className="btn-link btn-floating btn-lg text-white"
+              href="https://in.linkedin.com/in/jatin-devaiya-602b2b253?trk=people-guest_people_search-card"
+              target="_blank"
+              role="button"
+              data-mdb-ripple-color="dark"
+            >
+              <i className="fab fa-linkedin-in" />
+            </a>
+
             {/* Facebook */}
             <a
               className="btn-link btn-floating btn-lg text-white"
@@ -43,15 +47,7 @@ const Footer = () => {
             >
               <i className="fab fa-facebook-f" />
             </a>
-            {/* Twitter */}
-            <a
-              className="btn-link btn-floating btn-lg text-white"
-              href="#!"
-              role="button"
-              data-mdb-ripple-color="dark"
-            >
-              <i className="fab fa-twitter" />
-            </a>
+
             {/* Google */}
             <a
               className="btn-link btn-floating btn-lg text-white"
@@ -61,15 +57,7 @@ const Footer = () => {
             >
               <i className="fab fa-google" />
             </a>
-            {/* Instagram */}
-            <a
-              className="btn-link btn-floating btn-lg text-white"
-              href="#!"
-              role="button"
-              data-mdb-ripple-color="dark"
-            >
-              <i className="fab fa-instagram" />
-            </a>
+
             {/* YouTube */}
             <a
               className="btn-link btn-floating btn-lg text-white"
@@ -104,7 +92,7 @@ const Footer = () => {
         >
           © 2023 Copyright :
           <a className="text-white" href="http://localhost:3000/">
-           &nbsp; JatinDevaiya.com
+            &nbsp; JatinDevaiya.com
           </a>
         </div>
         {/* Copyright */}

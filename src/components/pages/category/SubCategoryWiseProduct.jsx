@@ -47,7 +47,9 @@ const SubCategoryWiseProduct = () => {
                                 src={subCategoryProduct.image}
                                 className="w-100"
                               />
-                              <Link  to={`/singleproduct/${subCategoryProduct._id}`}>
+                              <Link
+                                to={`/singleproduct/${subCategoryProduct._id}`}
+                              >
                                 <div className="hover-overlay">
                                   <div
                                     className="mask"
@@ -102,12 +104,6 @@ const SubCategoryWiseProduct = () => {
                               >
                                 Details
                               </Link>
-                              <button
-                                className="btn btn-outline-primary btn-sm mt-2"
-                                type="button"
-                              >
-                                Add to wishlist
-                              </button>
                             </div>
                           </div>
                         </div>
