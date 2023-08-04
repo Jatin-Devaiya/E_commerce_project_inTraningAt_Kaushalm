@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/E_commerce_project_inTraningAt_Kaushalm/static/css/main.cc7279ae.css",
+    "main.js": "/E_commerce_project_inTraningAt_Kaushalm/static/js/main.2ebaf34b.js",
+    "static/js/787.8f326fcb.chunk.js": "/E_commerce_project_inTraningAt_Kaushalm/static/js/787.8f326fcb.chunk.js",
+    "index.html": "/E_commerce_project_inTraningAt_Kaushalm/index.html",
+    "main.cc7279ae.css.map": "/E_commerce_project_inTraningAt_Kaushalm/static/css/main.cc7279ae.css.map",
+    "main.2ebaf34b.js.map": "/E_commerce_project_inTraningAt_Kaushalm/static/js/main.2ebaf34b.js.map",
+    "787.8f326fcb.chunk.js.map": "/E_commerce_project_inTraningAt_Kaushalm/static/js/787.8f326fcb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc7279ae.css",
+    "static/js/main.2ebaf34b.js"
+  ]
+}
