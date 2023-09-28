@@ -75,7 +75,7 @@ const Homepage = () => {
                 </p>
                 <Link
                   // target="_blank"
-                  to="/"
+                  to="/loginpage"
                   className="btn btn-outline-white btn-lg"
                 >
                   Login is nessesary then product add & remove

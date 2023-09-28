@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Err = () => {
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.location.href=("/")
+    }, [1000]);
+  }, [])
+  
   return (
     <>
       <img
