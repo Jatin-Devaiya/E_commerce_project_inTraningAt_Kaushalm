@@ -32,6 +32,7 @@ const Navbar = ({ totalQuantity }) => {
       })
       .then((res) => {
         console.log(res.data, "logout");
+        localStorage.clear()
         window.location = "/loginpage";
         return res.data;
       });

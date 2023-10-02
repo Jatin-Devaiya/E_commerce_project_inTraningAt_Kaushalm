@@ -106,8 +106,10 @@ const SingleProduct = () => {
       });
   };
 
+  const token = localStorage.getItem("token")
   return (
     <>
+    {token?
       <div>
         {/* content */}
         <section className="py-5">
@@ -419,6 +421,9 @@ const SingleProduct = () => {
           </div>
         </section>
       </div>
+      :
+      window.location="/loginpage"
+      }
     </>
   );
 };

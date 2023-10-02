@@ -30,6 +30,7 @@ const LoginPage = () => {
       console.log("Response:", response.data);
       console.log("User Succesfully Login:", { email, password });
       alert("Login successful")
+      localStorage.setItem("token",email)
       window.location="/"
       // Perform any necessary actions based on the response
     } catch (error) {
